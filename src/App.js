@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar';
-import Spinner from './components/layout/Spinner';
 import Users from './components/users/Users';
+import Search from './components/users/Search';
+
 import axios from 'axios';
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
 		return (
 			<Fragment>
 				<Navbar title='My title' />
+				<Search />
 				<Users loading={this.state.loading} users={this.state.users} />
 			</Fragment>
 		);
