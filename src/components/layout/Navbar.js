@@ -1,21 +1,19 @@
 // KC: rce
-import React, { Component } from 'react';
+import React from 'react';
 // KC: impt
 import PropTypes from 'prop-types';
 
-export class Navbar extends Component {
-	static defaultProps = {
-		title: 'No Title Set',
-	};
+const Navbar = ({ title }) => {
+	return <div>Navbar for {title}</div>;
+};
 
-	static propTypes = {
-		// kc: ptsr
-		title: PropTypes.string.isRequired,
-	};
+Navbar.defaultProps = {
+	title: 'No Title Set',
+};
 
-	render() {
-		return <div>Navbar for {this.props.title}</div>;
-	}
-}
+Navbar.propTypes = {
+	// kc: ptsr
+	title: PropTypes.string.isRequired,
+};
 
 export default Navbar;

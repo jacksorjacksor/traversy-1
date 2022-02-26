@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class UserItem extends Component {
-	// Defining state
-	render() {
-		// Destructure state (get variables)
-		const { login } = this.props.user;
-		return (
-			<div className='card'>
-				<h1 className='NameOfPerson'>Hi: {login}</h1>
-			</div>
-		);
-	}
-}
+// Changed to functional component
+const UserItem = ({ user: { login } }) => {
+	return (
+		<div className='card'>
+			<h1 className='NameOfPerson'>Hai: {login}</h1>
+		</div>
+	);
+};
+
+UserItem.propTypes = {
+	// kc: ptor
+	user: PropTypes.object.isRequired,
+};
 
 export default UserItem;
