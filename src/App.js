@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import './App.css';
+import Navbar from './components/layout/Navbar';
 
 class App extends Component {
 	// Lifecycle method
@@ -10,6 +11,7 @@ class App extends Component {
 
 		return (
 			<Fragment>
+				<Navbar title='My title' />
 				{loading ? (
 					<h4>Loading...</h4>
 				) : (
