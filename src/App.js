@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar';
+import Spinner from './components/layout/Spinner';
 import Users from './components/users/Users';
 import axios from 'axios';
 
@@ -14,24 +15,21 @@ class App extends Component {
 	// - promises
 	async componentDidMount() {
 		this.setState({ loading: true });
-		const res = await axios.get('https://api.github.com/users');
-		this.setState({ users: res.data, loading: true });
+
+		// const res = await axios.get('https://api.github.com/users');
+		const res = await axios.get(
+			`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+		);
+		//
+
+		this.setState({ users: res.data, loading: false });
 	}
 
 	// Lifecycle method
 	render() {
-		const name = 'John Doe';
-		const loading = false;
-		const showName = true;
-
 		return (
 			<Fragment>
 				<Navbar title='My title' />
-				{loading ? (
-					<h4>Loading...</h4>
-				) : (
-					<h1>Hello {showName && name + '!'}</h1>
-				)}
 				<Users loading={this.state.loading} users={this.state.users} />
 			</Fragment>
 		);
