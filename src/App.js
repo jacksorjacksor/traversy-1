@@ -1,9 +1,14 @@
 import React, { Fragment, Component } from 'react';
+// $ npm i react-router-dom
+// ALSO: "Switch" is now called "Routes" as of react-router-dom v6
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import About from './components/pages/About';
 
 import axios from 'axios';
 
@@ -43,19 +48,36 @@ class App extends Component {
 		// Destructuring
 		const { users, loading, alert } = this.state;
 		return (
-			<Fragment>
-				<Navbar title='My title' />
-				<div className='container'>
-					<Alert alert={alert} />
-					<Search
-						searchUsers={this.searchUsers}
-						clearUsers={this.clearUsers}
-						showClear={users.length > 0 ? true : false}
-						setAlert={this.setAlert}
-					/>
-					<Users loading={loading} users={users} />
-				</div>
-			</Fragment>
+			<Router>
+				<Fragment>
+					<Navbar title='My title' />
+					<div className='container'>
+						<Alert alert={alert} />
+					</div>
+					{/* "Switch" is now called "Routes" as of react-router-dom v6 */}
+					<Routes>
+						<Route
+							exact
+							path='/'
+							element={
+								<Fragment>
+									<Search
+										searchUsers={this.searchUsers}
+										clearUsers={this.clearUsers}
+										showClear={
+											users.length > 0 ? true : false
+										}
+										setAlert={this.setAlert}
+									/>
+									<Users loading={loading} users={users} />
+								</Fragment>
+							}
+						/>
+
+						<Route exact path='/about' element={<About />} />
+					</Routes>
+				</Fragment>
+			</Router>
 		);
 	}
 }
