@@ -20,7 +20,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 		}
 	};
 
-	// Destructuring
+	// HTML
 	return (
 		<div>
 			<form onSubmit={onSubmit} action=''>
@@ -39,6 +39,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 	);
 };
 
+// PropType Checks
 Search.propTypes = {
 	searchUsers: PropTypes.func.isRequired,
 	clearUsers: PropTypes.func.isRequired,
