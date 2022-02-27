@@ -8,6 +8,8 @@ class Search extends Component {
 
 	static propTypes = {
 		searchUsers: PropTypes.func.isRequired,
+		clearUsers: PropTypes.func.isRequired,
+		showClear: PropTypes.bool.isRequired,
 	};
 
 	// Takes the name of whatever fired the onChange event, then stores the value in state
@@ -20,6 +22,8 @@ class Search extends Component {
 	};
 
 	render() {
+		// Destructuring
+		const { showClear, clearUsers } = this.props;
 		return (
 			<div>
 				<form onSubmit={this.onSubmit} action=''>
@@ -32,6 +36,8 @@ class Search extends Component {
 					/>
 					<input type='submit' value='Search' />
 				</form>
+				{/* Conditional: if showClear then do the thing */}
+				{showClear && <button onClick={clearUsers}>Clear</button>}
 			</div>
 		);
 	}

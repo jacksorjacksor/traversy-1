@@ -14,17 +14,6 @@ class App extends Component {
 	// For later - look into:
 	// - async & await
 	// - promises
-	// async componentDidMount() {
-	// 	this.setState({ loading: true });
-
-	// 	// const res = await axios.get('https://api.github.com/users');
-	// 	const res = await axios.get(
-	// 		`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-	// 	);
-	// 	//
-
-	// 	this.setState({ users: res.data, loading: false });
-	// }
 
 	// Search GitHub users
 	searchUsers = async (text) => {
@@ -36,13 +25,21 @@ class App extends Component {
 		this.setState({ users: res.data.items, loading: false });
 	};
 
+	clearUsers = () => this.setState({ users: [], loading: false });
+
 	// Lifecycle method
 	render() {
+		// Destructuring
+		const { users, loading } = this.state;
 		return (
 			<Fragment>
 				<Navbar title='My title' />
-				<Search searchUsers={this.searchUsers} />
-				<Users loading={this.state.loading} users={this.state.users} />
+				<Search
+					searchUsers={this.searchUsers}
+					clearUsers={this.clearUsers}
+					showClear={users.length > 0 ? true : false}
+				/>
+				<Users loading={loading} users={users} />
 			</Fragment>
 		);
 	}
