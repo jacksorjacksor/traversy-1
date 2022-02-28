@@ -31,17 +31,23 @@ const User = ({ user, loading, getUser }) => {
 	} else {
 		return (
 			<div>
-				<p>{name}</p>
+				<p>Name: {name}</p>
 				<img src={avatar_url} alt='' />
-				<p>{location}</p>
-				<p>{bio}</p>
-				<p>{blog}</p>
-				<p>{html_url}</p>
-				<p>{followers}</p>
-				<p>{following}</p>
-				<p>{public_repos}</p>
-				<p>{public_gists}</p>
-				<p>{hireable}</p>
+				<p>Location: {location}</p>
+				<p>Bio: {bio}</p>
+				<p>Blog: {blog}</p>
+				<a href={html_url} target='_blank' rel='noreferrer'>
+					<p>GitHub page: {html_url}</p>
+				</a>
+				<p>Followers: {followers}</p>
+				<p>Following: {following}</p>
+				<p>Public repos: {public_repos}</p>
+				<p>Public repos: {public_gists}</p>
+				{hireable ? (
+					<p>Currently hireable!</p>
+				) : (
+					<p>Not hireable at present</p>
+				)}
 			</div>
 		);
 	}

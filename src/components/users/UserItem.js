@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const UserItem = ({ user: { login } }) => {
 	return (
 		<div className='card'>
-			<h1 className='NameOfPerson'>Hai: {login}</h1>
+			<h1 className='NameOfPerson'>- {login}</h1>
 			<Link to={`/user/${login}`}>More</Link>
 		</div>
 	);
