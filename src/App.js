@@ -70,7 +70,7 @@ class App extends Component {
 		return (
 			<Router>
 				<Fragment>
-					<Navbar title='My title' />
+					<Navbar title='GitHub Finder' />
 					<div className='container'>
 						<Alert alert={alert} />
 					</div>
