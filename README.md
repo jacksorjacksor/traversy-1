@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# GitHub Scraper
+
+https://endbloke-react-1.netlify.app/
+
+Following Traversy's React Front to Back course (project 1)
+
+- Search for GitHub profiles!
+
+## React Boilerplate:
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
