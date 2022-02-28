@@ -27,13 +27,20 @@ if (process.env.NODE_ENV !== 'production') {
 class App extends Component {
 	state = {
 		users: [],
-		singleUser: {},
+		user: {},
 		loading: false,
 		alert: null,
 	};
 	// For later - look into:
 	// - async & await
 	// - promises
+	getUser = async (username) => {
+		this.setState({ loading: true });
+		const res = await axios.get(
+			`https://api.github.com/users/${username}?client_id=${githubClientID}&client_secret=${githubClientSecret}`
+		);
+		this.setState({ user: res.data, loading: false });
+	};
 
 	// Search GitHub users
 	searchUsers = async (text) => {
@@ -59,7 +66,7 @@ class App extends Component {
 	// Lifecycle method
 	render() {
 		// Destructuring
-		const { users, singleUser, loading, alert } = this.state;
+		const { users, user, loading, alert } = this.state;
 		return (
 			<Router>
 				<Fragment>
@@ -92,9 +99,9 @@ class App extends Component {
 							path='/user/:login'
 							element={
 								<User
-									getUser={this.getUser}
-									singleUser={singleUser}
+									user={user}
 									loading={loading}
+									getUser={this.getUser}
 								/>
 							}
 						/>
